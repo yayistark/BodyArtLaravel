@@ -1,9 +1,9 @@
 @extends('layouts.navbar')
 
 @section('cuerpo')
-<div class="container">
-<div class="row">
-         <div class="col-lg-6 mx-auto py-3 px-3 fondo-imagen">
+<div class="container my-5">
+<div class="row my-5">
+         <div class="col-lg-6 mx-auto py-3 my-5 px-3 fondo-imagen">
             <div class="signup-form ">
                <form role="form" id="register-form" action="{{ route('login') }}" autocomplete="off" method="post">
                @csrf

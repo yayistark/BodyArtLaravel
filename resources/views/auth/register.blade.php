@@ -2,8 +2,8 @@
 
 @section('cuerpo')
 <div class="container mb-5 my-5">
-<div class="row">
-  <div class="col-lg-6 mx-auto py-3 px-3 fondo-imagen">
+<div class="row my-3">
+  <div class="col-lg-6 mx-auto my-3 py-3 px-3 fondo-imagen">
     <div class="signup-form">
       <div class="form-header">
         <h3 class="form-title text-center text-white mb-3"><i class="icon ion-md-contact"></i> Registro</h3>

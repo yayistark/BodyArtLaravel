@@ -66,11 +66,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         $request = app('request');
         if($request->hasfile('avatar')){
-            $filename = time().'.'.$request->avatar->getClientOriginalExtension();
+            $filename = $request->email.'.'.$request->avatar->getClientOriginalExtension();
             $request->avatar->move(public_path('uploads/avatars'), $filename);
         }
+        
         
         return User::create([
             'nombre' => $data['nombre'],
