@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 </head>
 <body>
-    <video src="video/videotattoo.mp4" autoplay muted loop></video>
+    <video src="{{asset('img/video/videotattoo.mp4')}}" autoplay muted loop></video>
    <main>
         <h2>Body Art</h2>
         <p>Sumate a la experiencia del mundo del tattoo</p>
