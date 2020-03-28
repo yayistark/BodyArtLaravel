@@ -27,22 +27,20 @@ class ProductsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'price' => 'required|max=5',
+            'price' => 'required',
             'image' => 'required|image',
             'description' => 'required|string'
         ]);
 
         $product = new Product;
-
-        $product_image = $request->image;
         if($request->hasfile('image')){
-            $product_image_name = $request->id.'.'.$product_image->getClientOriginalExtension();
-            $product_image->move(public_path("uploads/product/$request->id"), $product_image_name);
+            $filename = time().$request->name.'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path("uploads/product"), $filename);
         }
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->image = $product_image_name;
+        $product->image = $filename;
         $product->save();
         return redirect()->route('products.index');
     }
@@ -62,17 +60,18 @@ class ProductsController extends Controller
  
      public function update(Request $request, $id)
     {
+       
         $this->validate($request, [
             'name' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|max=5',
+            'price' => 'required',
         ]);
-        
-        if($request->hasfile('image')){
+        $product = Product::find($id);
+       /* if($request->hasfile('image')){
             $product_image_name = $request->id.'.'.$product_image->getClientOriginalExtension();
             $product_image->move(public_path("uploads/product/$request->id"), $product_image_name);
             $product->save();
-        }
+        }*/
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -88,6 +87,6 @@ class ProductsController extends Controller
         $product = Product::find($id);
 
         $product->delete();
-        return redirect()->route('products.index')();
+        return redirect()->route('products.index');
     }
 }

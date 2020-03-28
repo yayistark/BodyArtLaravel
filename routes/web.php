@@ -22,9 +22,10 @@ Route::get('/inicio',function () {
 Route::get('/faq',function () {
     return view('faq');
 });
-Route::resource('products', 'productsController');
+
 Auth::routes();
 
 Route::get('/perfil', 'HomeController@index')->name('perfil');
+Route::resource('products', 'productsController');
 
 

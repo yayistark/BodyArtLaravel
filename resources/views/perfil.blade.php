@@ -26,9 +26,9 @@
                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Proximamente...</div>
                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                    <p>Hola,estas listo para publicar tu primer modelo?</p>
-                   <a class=" btn btn-secondary " href="{{ url('/vender') }}">Click Aqui</a>
+                   <a class=" btn btn-secondary " href="{{ route('products.create') }}">Click Aqui</a>
                    <p>quieres ver tu lista de productos?</p>
-                   <a class=" btn btn-secondary " href="{{ url('/lista') }}">Ver lista</a>
+                   <a class=" btn btn-secondary " href="{{ route('products.index') }}">Ver lista</a>
                    </div>
 
                    </div>
