@@ -1,11 +1,11 @@
 @extends('layouts.navbar');
 @section('cuerpo');
-
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-12 fondo-imagen">
-       
-            <h2 class="text-center">Tabla de productos</h2>
+        <div class="col-md-8 col-12 fondo-imagen mb-3">
+    
+            <h2 class="text-center pt-3">Tabla de productos</h2>
+            <div class="table-responsive-sm">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -20,9 +20,11 @@
                     <tbody>
                     @forelse($products as $product)
                     <tr>
+                   
+                    @if(Auth::user()->id === $product->usuario_id)
                         <td>{{ $product->id}}</td>
                         <td>
-                        <img src="uploads/product/{{$product->image}}" width="20%">
+                        <img src="uploads/product/{{$product->image}}" width="100%" style="max-width: 70px">
                         </td>
                         <td>{{ $product->name}}</td>
                         <td>${{ $product->price }}</td>
@@ -37,6 +39,7 @@
                             </form>
                         </td>
                         </tr>
+                     @endif
                         @empty
                         <td>No hay producto en la base de datos</td>
                     @endforelse
@@ -47,4 +50,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
+use Auth;
+
 class ProductsController extends Controller
 {
     public function __construct()
@@ -11,6 +14,7 @@ class ProductsController extends Controller
         $this->middleware('auth');
     }
    
+    
     public function index()
     {
         return view('products.index', ['products' => Product::all()]);
@@ -41,6 +45,7 @@ class ProductsController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->image = $filename;
+        $product->usuario_id = Auth::user()->id;
         $product->save();
         return redirect()->route('products.index');
     }
@@ -48,7 +53,7 @@ class ProductsController extends Controller
   
     public function show($id)
     {
-        //
+        return view('products.show', ['products' => Product::find($id) ]);
     }
 
 
@@ -89,4 +94,5 @@ class ProductsController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+   
 }

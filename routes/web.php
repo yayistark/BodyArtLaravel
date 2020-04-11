@@ -22,6 +22,7 @@ Route::get('/inicio',function () {
 Route::get('/faq',function () {
     return view('faq');
 });
+Route::get('/lista','inicioController@index');
 
 Auth::routes();
 
